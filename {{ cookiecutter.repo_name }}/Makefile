@@ -21,7 +21,6 @@ endif
 
 ## Install Python Dependencies
 requirements: test_environment
-	pip install -r requirements.txt
 
 ## Make Dataset
 data: requirements
@@ -48,7 +47,7 @@ create_environment:
 ifeq (True,$(HAS_CONDA))
 		@echo ">>> Detected conda, creating conda environment."
 ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
-	conda create --name $(PROJECT_NAME) python=3.5
+	conda create --name $(PROJECT_NAME) python=3.5 -f environment.yml
 else
 	conda create --name $(PROJECT_NAME) python=2.7
 endif
